@@ -1,0 +1,6 @@
+Z:\AProject\C#\ATH\First\First\bin\Debug\First.exe.config
+Z:\AProject\C#\ATH\First\First\bin\Debug\First.exe
+Z:\AProject\C#\ATH\First\First\bin\Debug\First.pdb
+Z:\AProject\C#\ATH\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
+Z:\AProject\C#\ATH\First\First\obj\Debug\First.exe
+Z:\AProject\C#\ATH\First\First\obj\Debug\First.pdb
