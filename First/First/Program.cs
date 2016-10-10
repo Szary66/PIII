@@ -157,7 +157,25 @@ namespace First {
         }
 
         int cRozkurcz(int rozkurcz) {
-
+            if (rozkurcz < 120) {//optymalne
+                Console.WriteLine("Optymalne");
+                return 0;
+            } else if (120 > rozkurcz && rozkurcz > 129) {//prawidlowe
+                Console.WriteLine("Prawidlowe");
+                return 1;
+            } else if (130 > rozkurcz && rozkurcz > 139) {//wysokie prawidlowe
+                Console.WriteLine("Wysokie prawidlowe");
+                return 2;
+            } else if (140 > rozkurcz && rozkurcz > 159) {//nadcisnienie lagodne
+                Console.WriteLine("Nadcisnienie lagodne");
+                return 3;
+            } else if (160 > rozkurcz && rozkurcz > 179) {//nadcisnienie umiarkowane
+                Console.WriteLine("Nadcisnienie umiarkowane");
+                return 4;
+            } else { // nadciwnienie ciezkie
+                Console.WriteLine("Nadcisnienie ciezkie");
+                return 5;
+            }
         }
     }
 }
