@@ -14,15 +14,16 @@ namespace Second {
         static void Main(string[] args) {
             //ZgadnijLiczbe();
             WczytajPlanety();
+            //Wyjatek();
         }
 
-
+        //zadanie 1 ********************************************************************************
         static void ZgadnijLiczbe() {
             Random random = new Random(); // tworzenie obiektu klasy Random
             int wylosowana = random.Next(0, 100); //losowanie int z zakresu 0 - 100
             int i;
             do {
-                Console.WriteLine("Podaj liczbe: "); 
+                Console.WriteLine("Podaj liczbe: ");
                 i = int.Parse(Console.ReadLine());
 
                 if (i < wylosowana)
@@ -34,7 +35,7 @@ namespace Second {
             Console.WriteLine("Brawo odgadles: {0}", i);
         }
 
-
+        // zadanie 2 ************************************************************************************
         static void Planety() {
             WczytajPlanety();
         }
@@ -47,28 +48,32 @@ namespace Second {
 
 
             //porownanie nazwy z enumem i przypisanie do enuma
-            if (nazwaPlanety == "merkury")
-                planeta = TypPlanety.Merkury;
-            else if (nazwaPlanety == "wenus")
-                planeta = TypPlanety.Wenus;
-            else if (nazwaPlanety == "ziemia")
-                planeta = TypPlanety.Ziemia;
-            else if (nazwaPlanety == "mars")
-                planeta = TypPlanety.Mars;
-            else if (nazwaPlanety == "jowisz")
-                planeta = TypPlanety.Jowisz;
-            else if (nazwaPlanety == "saturn")
-                planeta = TypPlanety.Saturn;
-            else if (nazwaPlanety == "uran")
-                planeta = TypPlanety.Uran;
-            else if (nazwaPlanety == "neptun")
-                planeta = TypPlanety.Neptun;
-            else { // nie ma takiej planety
-                Console.WriteLine("Nie ma takiej planety!");
-                return; //przerwa w instrukcji
+            try {
+                if (nazwaPlanety == "merkury")
+                    planeta = TypPlanety.Merkury;
+                else if (nazwaPlanety == "wenus")
+                    planeta = TypPlanety.Wenus;
+                else if (nazwaPlanety == "ziemia")
+                    planeta = TypPlanety.Ziemia;
+                else if (nazwaPlanety == "mars")
+                    planeta = TypPlanety.Mars;
+                else if (nazwaPlanety == "jowisz")
+                    planeta = TypPlanety.Jowisz;
+                else if (nazwaPlanety == "saturn")
+                    planeta = TypPlanety.Saturn;
+                else if (nazwaPlanety == "uran")
+                    planeta = TypPlanety.Uran;
+                else if (nazwaPlanety == "neptun")
+                    planeta = TypPlanety.Neptun;
+                else { // nie ma takiej planety
+                    throw new ArgumentOutOfRangeException("Nie ma takiej planety!");
+                }
+
+                WyswietlPlanete(planeta); // wywowanie funkcji WyswietlPlanete z wybrana planeta 
+            } catch (Exception e){
+                Console.WriteLine($"Wyjatek:  { e.Message}");
             }
 
-            WyswietlPlanete(planeta); // wywowanie funkcji WyswietlPlanete z wybrana planeta 
         }
 
         static void WyswietlPlanete(TypPlanety typPlanety) {
@@ -98,6 +103,17 @@ namespace Second {
                 Console.WriteLine("Ziemia!");
                 break;
             }
+        }
+
+        static void Wyjatek() {
+            try { // wykonanie dzialania
+                var d = double.Parse(Console.ReadLine());
+
+                throw new ArgumentNullException();
+            } catch (FormatException e) { // obsluga w ranie wystapienia wyjatku
+                Console.WriteLine($"Wystapil wyjatel: {e.Message}");
+            }
+
         }
     }
 }
