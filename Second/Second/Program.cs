@@ -13,8 +13,10 @@ namespace Second {
     class Program {
         static void Main(string[] args) {
             //ZgadnijLiczbe();
-            WczytajPlanety();
+            //WczytajPlanety();
             //Wyjatek();
+
+            RownanieKwadratowe(1, 2, 3);
         }
 
         //zadanie 1 ********************************************************************************
@@ -34,6 +36,9 @@ namespace Second {
 
             Console.WriteLine("Brawo odgadles: {0}", i);
         }
+
+
+
 
         // zadanie 2 ************************************************************************************
         static void Planety() {
@@ -70,7 +75,7 @@ namespace Second {
                 }
 
                 WyswietlPlanete(planeta); // wywowanie funkcji WyswietlPlanete z wybrana planeta 
-            } catch (Exception e){
+            } catch (Exception e) {
                 Console.WriteLine($"Wyjatek:  { e.Message}");
             }
 
@@ -105,6 +110,7 @@ namespace Second {
             }
         }
 
+        //******************************************wyjatek
         static void Wyjatek() {
             try { // wykonanie dzialania
                 var d = double.Parse(Console.ReadLine());
@@ -115,5 +121,48 @@ namespace Second {
             }
 
         }
+
+        //*******************************************tablice
+        static void Tablice() {
+            int size;
+            size = 7;
+            double[] t = new double[size];
+
+            double[] tab = { 1, 2, 3, 4, 5, 6, 7 };
+
+
+            double? d = null; //typ? - może przyjmować typ null
+        }
+
+        //zadanie 3
+        static void RownanieKwadratowe(double a, double b, double c) {
+            double delta = b * b - 4 * a * c;
+
+            try {
+                if (delta > 0) {
+                    Pierwiastki2(delta, a, b);
+                } else if (delta == 0) {
+                    Pierwiastkek1(delta, a, b);
+                } else {
+                    throw new ArgumentOutOfRangeException("Nie ma pierwiastkow!");
+                }
+            } catch (Exception e) {
+                Console.WriteLine($"{e.Message}");
+            }
+        }
+
+        static void Pierwiastki2(double delta, double a, double b) {
+            double x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+            double x2 = (-b + Math.Sqrt(delta)) / (2 * a);
+
+            Console.WriteLine("x1 = {0}, x2 = {1}", x1, x2);
+        }
+
+        static void Pierwiastkek1(double delta, double a, double b) {
+            double x0 = (-b - Math.Sqrt(delta)) / (2 * a);
+            Console.WriteLine($"x0 = {0}", x0);
+        }
     }
+
+    //zadanie domowa srednia arytmetyczna, max, min dla ciagu liczb, pytaj czy uzytkownik chce wczytaj kolejna liczbe - BEZ TABLiC
 }
