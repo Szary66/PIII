@@ -16,7 +16,8 @@ namespace Second {
             //WczytajPlanety();
             //Wyjatek();
 
-            RownanieKwadratowe(1, 2, 3);
+            //RownanieKwadratowe(1, 2, 3);
+            ZadanieDomowe();
         }
 
         //zadanie 1 ********************************************************************************
@@ -162,7 +163,39 @@ namespace Second {
             double x0 = (-b - Math.Sqrt(delta)) / (2 * a);
             Console.WriteLine($"x0 = {0}", x0);
         }
-    }
 
-    //zadanie domowa srednia arytmetyczna, max, min dla ciagu liczb, pytaj czy uzytkownik chce wczytaj kolejna liczbe - BEZ TABLiC
+
+        //zadanie domowa srednia arytmetyczna, max, min dla ciagu liczb, pytaj czy uzytkownik chce wczytaj kolejna liczbe - BEZ TABLiC
+
+        static void ZadanieDomowe() {
+            double srednia = 0;
+            double suma = 0;
+            double max = double.MinValue;
+            double min = double.MaxValue;
+            bool pytajDalej = true;
+            int index = 0;
+            do {
+                double liczba;
+                Console.Write("Podaj liczbe - jesli chcesz przerwac podaj dowolna litere: ");
+                try {
+                    liczba = double.Parse(Console.ReadLine());
+
+                    ++index;
+                    suma += liczba;
+                    srednia = suma / index;
+                    max = (max < liczba) ? liczba : max;
+                    min = (min > liczba) ? liczba : min;
+
+                } catch {
+                    pytajDalej = false;
+                    break;
+                }
+
+                Console.WriteLine("Srednia: {0}, Max: {1}, Min: {2}.", srednia, max, min);
+            } while (pytajDalej);
+
+        }
+
+
+    }
 }
